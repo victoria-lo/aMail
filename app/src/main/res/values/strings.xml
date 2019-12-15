@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">aMail</string>
+    <string name="title_upload">Upload</string>
+    <string name="title_newMail">New Mail</string>
+    <string name="title_settings">Info</string>
+    <string name="uploadText">To send a batch mail, \nplease upload a mail list in csv format.\n\n
+        File must contain one column of emails only.</string>
+    <string name="uploadHere">Upload file</string>
+    <string name="upload_here">Upload Here</string>
+    <string name="email">Recipient Email</string>
+    <string name="subject">Subject</string>
+    <string name="to">To</string>
+    <string name="subjectText">Subject</string>
+    <string name="message">Message</string>
+    <string name="messageText">Message:</string>
+    <string name="send">Send</string>
+    <string name="step_1_n_t_input_your_email">Step 1\n\tSet up a GMail account.
+        \n\nStep 2\n\tSet up your App Password.\n\nTo learn how to set up an App Password, please visit:
+        https://support.google.com/accounts/answer/185833?hl=en
+        \n\nStep 3\n\tEnter the information below and save.</string>
+    <string name="get_started">Get Started</string>
+    <string name="email_sender">Email</string>
+    <string name="app_password">App Password</string>
+    <string name="save">SAVE</string>
+</resources>

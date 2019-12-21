@@ -1,7 +1,5 @@
 package com.gameguildstudios.amail;
 
-import android.widget.Toast;
-
 public class Utils {
     private static String email;
     private static String password;
@@ -20,15 +18,15 @@ public class Utils {
     }
 
     public static String getEmail() {
-        if(email ==null){
-            setEmail("gameguildstudios@gmail.com");
+        if(email == null){
+            return "";
         }
         return email;
     }
 
     public static String getPassword() {
-        if(password ==null){
-            setPassword("ctjlcfybakjjjskg");
+        if(password == null){
+            return "";
         }
         return password;
     }

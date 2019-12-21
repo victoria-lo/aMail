@@ -37,8 +37,14 @@ public class NewMailFragment extends Fragment {
         //Send Mail
         try {
             if (!mail.matches("") && !subject.matches("")&& !message.matches("")) {
+                if (Utils.getEmail().equals("") || Utils.getPassword().equals("")) {
+                    Toast.makeText(getContext(),
+                            "Please set up your email and app password first!",
+                            Toast.LENGTH_SHORT).show();
+                    return;
+                }
                 for (String email : mails) {
-                    MailSend(email, subject, message);
+                    mailSend(email, subject, message);
                 }
             } else {
                 Toast.makeText(getContext(), "Something is left blank.", Toast.LENGTH_LONG).show();
@@ -49,7 +55,7 @@ public class NewMailFragment extends Fragment {
 
     }
 
-    protected void MailSend(String email, String subject, String message){
+    protected void mailSend(String email, String subject, String message){
         JavaMailAPI javaMailAPI = new JavaMailAPI(inflatedView.getContext(),
                 email, subject, message);
 

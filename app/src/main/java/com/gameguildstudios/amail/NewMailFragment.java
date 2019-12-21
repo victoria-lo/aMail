@@ -10,6 +10,14 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.nio.charset.StandardCharsets;
+
 
 public class NewMailFragment extends Fragment {
 
@@ -33,6 +41,7 @@ public class NewMailFragment extends Fragment {
 
         String message = mMessage.getText().toString();
         String subject = mSubject.getText().toString().trim();
+        readCache();
 
         //Send Mail
         try {
@@ -82,5 +91,32 @@ public class NewMailFragment extends Fragment {
     protected void displayReceivedData(String message)
     {
         mEmail.setText(message);
+    }
+
+    public void readCache() {
+        String contents;
+        FileInputStream fis = null;
+        try {
+            fis = getContext().openFileInput(Utils.getFilename());
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        InputStreamReader inputStreamReader =
+                new InputStreamReader(fis, StandardCharsets.UTF_8);
+        StringBuilder stringBuilder = new StringBuilder();
+        try (BufferedReader reader = new BufferedReader(inputStreamReader)) {
+            String line = reader.readLine();
+            while (line != null) {
+                stringBuilder.append(line).append('\n');
+                line = reader.readLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } finally {
+            contents = stringBuilder.toString();
+        }
+        String[] credentials = contents.split(",");
+        Utils.setEmail(credentials[0]);
+        Utils.setPassword(credentials[1]);
     }
 }

@@ -1,8 +1,10 @@
 package com.gameguildstudios.amail;
 
+
 public class Utils {
     private static String email;
     private static String password;
+    private static final String filename = "credentials";
 
     public Utils(String email, String password) {
         Utils.email = email;
@@ -29,6 +31,16 @@ public class Utils {
             return "";
         }
         return password;
+    }
+
+    public static String getCredentials() {
+        if (password == null || email == null)
+            return "";
+        return email + "," + password;
+    }
+
+    public static String getFilename() {
+        return filename;
     }
 
 //    private String EMAIL = "gameguildstudios@gmail.com";
